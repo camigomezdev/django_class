@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos en Venta</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .card {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 15px;
+            width: calc(50% - 10px);
+            max-width: 600px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 150px;
+            height: auto;
+            margin-right: 15px;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .card h2 {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #e67e22;
+        }
+        .details-button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border: none;
+            background-color: #e67e22;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            align-self: flex-start;
+        }
+        .details-button:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+    <h1>Productos en Venta</h1>
+    <div class="container">
+
+        {% for product in products %}
+        <div class="card">
+            <img src="{{ product.image.url }}" alt="Producto 1">
+            <div class="card-content">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p class="price">${{ product.price }}</p>
+                <p><strong>SKU:</strong> {{ product.sku }}</p>
+                <a href="{% url 'detail' product_id=product.id%}" class="details-button">Ver Detalle</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
