@@ -64,7 +64,7 @@
     </style>
 </head>
 <body>
-    <h1>Productos en Venta</h1>
+    <h1>Productos por Categoria: {{category.name}}</h1>
     <div class="container">
 
         {% for product in products %}
@@ -73,7 +73,6 @@
             <div class="card-content">
                 <h2>{{ product.name }}</h2>
                 <p>{{ product.description }}</p>
-                <p>{{ product.category.name }}</p>
                 <p class="price">${{ product.price }}</p>
                 <p><strong>SKU:</strong> {{ product.sku }}</p>
                 <a href="{% url 'detail' product_id=product.id%}" class="details-button">Ver Detalle</a>

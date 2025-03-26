@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, render
-from .models import Product
+from .models import Product, Category
 
 
 def get_detail(request, product_id):
@@ -8,6 +8,15 @@ def get_detail(request, product_id):
 
 
 def index(request):
-    products = Product.objects.order_by("-created_date")[:5]
+    products = Product.objects.select_related(
+        'category').order_by("-created_date")
+
     context = {"products": products}
     return render(request, "products/index.html", context)
+
+
+def get_products_by_category(request, category_id):
+    category = Category.objects.get(id=category_id)
+    products = category.products.all()
+    context = {"category": category, "products": products}
+    return render(request, "products/category.html", context)

@@ -83,6 +83,7 @@
             <img src="{{ product.image.url }}" alt="Producto">
             <h1>{{ product.name }}</h1>
             <p>{{ product.description }}</p>
+            <p>{{ product.category.name }}</p>
             <p class="price">${{ product.price }}</p>
             <p><strong>SKU:</strong> {{ product.sku }}</p>
         </div>
