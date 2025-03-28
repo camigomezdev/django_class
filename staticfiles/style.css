@@ -1,0 +1,56 @@
+.card-img-top {
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    width: 100%;
+}
+
+.product-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.comment {
+    border-bottom: 1px solid #ddd;
+    padding: 1rem 0;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.login {
+    height: 100vh;
+    background-color: #f8f9fa;
+}
+
+.login__card {
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    background-color: white;
+    padding: 2rem;
+}
+
+.login__link {
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.profile {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__card {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}

@@ -1,6 +1,10 @@
 run-local:
 	python manage.py runserver --settings=settings.local
 
+# call with make startapp APP_NAME=<your-app-name>
+startapp:
+	python manage.py startapp $(APP_NAME) --settings=settings.local
+
 makemigrations:
 	python manage.py makemigrations --settings=settings.local
 

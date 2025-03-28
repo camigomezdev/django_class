@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.decorators import login_required
 from .models import Product, Category
 
 
@@ -15,8 +16,9 @@ def index(request):
     return render(request, "products/index.html", context)
 
 
+@login_required(login_url='login')
 def get_products_by_category(request, category_id):
     category = Category.objects.get(id=category_id)
     products = category.products.all()
     context = {"category": category, "products": products}
-    return render(request, "products/category.html", context)
+    return render(request, "products/index.html", context)

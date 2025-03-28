@@ -1,0 +1,47 @@
+{% extends 'common/base.html' %}
+{% block content %}
+  <div class="container my-5">
+    <!-- Información del producto en card horizontal -->
+    <div class="card mb-5 shadow">
+      <div class="row g-0">
+        <div class="col-md-5">
+          <img src="{{ product.image.url }}" alt="Imagen del Producto" class="product-image" />
+        </div>
+        <div class="col-md-7">
+          <div class="card-body">
+            <h2 class="card-title">{{ product.name }}o</h2>
+            <p class="text-muted">SKU: {{ product.sku }}</p>
+            <p class="card-text">{{ product.description }}</p>
+            <h4 class="text-primary">Precio: ${{ product.price }}0</h4>
+            <button class="btn btn-success">Añadir al carrito</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de comentarios -->
+    <div class="mb-4">
+      <h4>Comentarios</h4>
+      <form class="mb-3">
+        <div class="mb-2">
+          <textarea class="form-control" rows="3" placeholder="Escribe tu comentario" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Publicar Comentario</button>
+      </form>
+
+      <!-- Lista de comentarios -->
+      <div class="comment">
+        <p>
+          <strong>Juan Pérez</strong> <small class="text-muted">- 25 de marzo de 2025</small>
+        </p>
+        <p>Muy buen producto, llegó rápido y en excelentes condiciones.</p>
+      </div>
+      <div class="comment">
+        <p>
+          <strong>Ana Gómez</strong> <small class="text-muted">- 24 de marzo de 2025</small>
+        </p>
+        <p>La calidad es mejor de lo que esperaba. Lo recomiendo totalmente.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
