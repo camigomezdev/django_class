@@ -20,28 +20,27 @@
     </div>
 
     <!-- Sección de comentarios -->
+
     <div class="mb-4">
       <h4>Comentarios</h4>
-      <form class="mb-3">
-        <div class="mb-2">
-          <textarea class="form-control" rows="3" placeholder="Escribe tu comentario" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Publicar Comentario</button>
-      </form>
-
+      {% if perms.product.add_comments %}
+        <form class="mb-3" action="{% url 'add_new_comment' product.id %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-2">{{ form.text }}</div>
+          <button type="submit" class="btn btn-primary">Publicar Comentario</button>
+        </form>
+      {% endif %}
       <!-- Lista de comentarios -->
-      <div class="comment">
-        <p>
-          <strong>Juan Pérez</strong> <small class="text-muted">- 25 de marzo de 2025</small>
-        </p>
-        <p>Muy buen producto, llegó rápido y en excelentes condiciones.</p>
-      </div>
-      <div class="comment">
-        <p>
-          <strong>Ana Gómez</strong> <small class="text-muted">- 24 de marzo de 2025</small>
-        </p>
-        <p>La calidad es mejor de lo que esperaba. Lo recomiendo totalmente.</p>
-      </div>
+      {% for comment in comments %}
+        <div class="comment">
+          <p>
+            <strong>{{ comment.user.username }}</strong> <small class="text-muted">- {{ comment.created_date }}</small>
+          </p>
+          <p>{{ comment.text }}</p>
+        </div>
+      {% empty %}
+        <p>No hay comentarios para este producto.</p>
+      {% endfor %}
     </div>
   </div>
 {% endblock %}

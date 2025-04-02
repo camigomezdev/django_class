@@ -1,0 +1,13 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+  <div class="profile my-5">
+    <div class="profile__card text-center">
+      <h2 class="mb-3">Hola, <span id="user-name">{{user.username}}</span></h2>
+      <form action="{% url 'logout' %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button class="btn btn-danger">Cerrar Sesión</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
